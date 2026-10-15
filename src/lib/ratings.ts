@@ -30,3 +30,13 @@ export function formatStarRating(rating: number | null): string {
 
     return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
 }
+
+/**
+ * Builds a short "X.X / 5" display string for a rating, or `'No rating yet'`
+ * when the rating is `null`. Ratings are clamped to the 0–5 range first.
+ */
+export function formatRatingOutOfFive(rating: number | null): string {
+    if (rating === null) return 'No rating yet';
+
+    return `${clampRating(rating).toFixed(1)} / 5`;
+}
